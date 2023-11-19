@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="First Commit" />
+    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Admin view">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/GuestLoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/GuestLoginViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/guest-login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/guest-login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +37,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2YMITrmQH0WtS5zuXTR7npZxXmF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,8 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/EquipmentManagementSystem/src/main/java/app/equip",
-    "last_opened_file_path": "C:/Java/javafx-sdk-19/lib",
+    "last_directory_selection": "C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System/src/main/java/app/equip",
+    "last_opened_file_path": "C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -81,11 +90,20 @@
       <option name="project" value="LOCAL" />
       <updated>1700330162424</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Admin view">
+      <option name="closed" value="true" />
+      <created>1700333062646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700333062646</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit" />
+    <MESSAGE value="Admin view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin view" />
   </component>
 </project>
