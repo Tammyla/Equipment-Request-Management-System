@@ -10,7 +10,7 @@ import java.io.IOException;
 public class EquipApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(EquipApplication.class.getResource("FXML/login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EquipApplication.class.getResource("FXML/guest-register-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         //to reference the stylesheet to show css style format

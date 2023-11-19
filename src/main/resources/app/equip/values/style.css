@@ -5,3 +5,44 @@
 .green-bg{
     -fx-background-color:   #1AA74C;
 }
+
+.btn{
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial Black";
+}
+
+.submit{
+    -fx-background-color: linear-gradient(to bottom right, #15539d, #116aaf);
+    -fx-text-align: center;
+}
+
+.submit:hover{
+    -fx-background-color: linear-gradient(to bottom right, #0ea2f6, #08b8fa);
+}
+
+.menu{
+    -fx-background-color: #15539D;
+    -fx-alignment: LEFT;
+    -fx-padding: 8 25 8 20;
+    -fx-background-insets: 5px;
+
+}
+
+.menu:hover{
+    -fx-background-color: #0ea2f6;
+}
+
+.signOut{
+    -fx-padding: 10 25 15 20;
+}
+
+.textfield{
+    -fx-border-color: #fff;
+    -fx-border-width: .2px;
+}
+.textfield:focused{
+    -fx-border-color: linear-gradient(to bottom right, #15539d, #116aaf);
+    -fx-border-width: .8px;
+}
