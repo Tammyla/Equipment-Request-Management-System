@@ -45,7 +45,7 @@ public class DBUtils {
     }
 
     /*Function to control the guest registration*/
-    /*public static void guestRegister(ActionEvent event, String name, String phone_no, String email, String role, String username, String password ){
+    public static void guestRegister(ActionEvent event, String name, String phone_no, String email, String role, String username, String password ){
         Connection connection = null;
         PreparedStatement psTnsert = null;
         PreparedStatement psCheckUserExists = null;
@@ -105,10 +105,10 @@ public class DBUtils {
             }
 
         }
-    }*/
+    }
 
     /*Function to control the main login*/
-    /*public static void logInUser(ActionEvent event, String username, String password){
+    public static void logInUser(ActionEvent event, String username, String password){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -166,7 +166,7 @@ public class DBUtils {
 
         }
 
-    }*/
+    }
 
 
 }

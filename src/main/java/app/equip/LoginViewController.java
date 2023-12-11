@@ -32,14 +32,14 @@ public class LoginViewController implements Initializable {
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //DBUtils.logInUser(event,txtUsername.getText(), txtPassword.getText());
+                DBUtils.logInUser(event,txtUsername.getText(), txtPassword.getText());
             }
         });
 
         btnGuest.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "guest-register-view.fxml", "Guest Registration", null);
+                DBUtils.changeScene(event, "FXML/guest-register-view.fxml", "Guest Registration", "");
             }
         });
 

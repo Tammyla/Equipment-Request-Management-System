@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Added editted controller and DBUtils">
+    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Added new GUI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/GuestLoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/guest-login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/guest-register-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +53,10 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System/src/main/java/app/equip&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tammy/Downloads/demo&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.29948586&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -108,14 +107,22 @@
       <option name="project" value="LOCAL" />
       <updated>1700368416258</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added new GUI">
+      <option name="closed" value="true" />
+      <created>1701406220497</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701406220497</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />
     <MESSAGE value="Admin view" />
-    <MESSAGE value="Added new GUI" />
     <MESSAGE value="Added editted controller and DBUtils" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added editted controller and DBUtils" />
+    <MESSAGE value="Added new GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new GUI" />
   </component>
 </project>

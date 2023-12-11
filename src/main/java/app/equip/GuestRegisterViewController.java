@@ -39,11 +39,11 @@ public class GuestRegisterViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        /*btnGuest.setOnAction(new EventHandler<ActionEvent>() {
+        btnGuest.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if(!txtUsername.getText().trim().isEmpty() && !txtPassword.getText().trim().isEmpty()){
-                    //DBUtils.guestRegister(event,txtName.getText(),txtPhoneNo.getText(),txtEmail.getText(),cbxRoles.getId(),txtUsername.getText(),txtPassword.getText());
+                    DBUtils.guestRegister(event,txtName.getText(),txtPhoneNo.getText(),txtEmail.getText(),cbxRoles.getId(),txtUsername.getText(),txtPassword.getText());
                 } else{
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -52,12 +52,12 @@ public class GuestRegisterViewController implements Initializable {
                 }
 
             }
-        });*/
+        });
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "login-view.fxml", "Login Page", null);
+                DBUtils.changeScene(event, "FXML/login-view.fxml", "Login Page", "");
             }
         });
 
