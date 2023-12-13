@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Added new GUI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" afterDir="false" />
+    <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Added newly created login method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/equip/CrudFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/DbConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/crudForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/lib/database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701406220497</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added newly created login method">
+      <option name="closed" value="true" />
+      <created>1702268473634</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702268473634</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -123,6 +131,7 @@
     <MESSAGE value="Admin view" />
     <MESSAGE value="Added editted controller and DBUtils" />
     <MESSAGE value="Added new GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new GUI" />
+    <MESSAGE value="Added newly created login method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added newly created login method" />
   </component>
 </project>

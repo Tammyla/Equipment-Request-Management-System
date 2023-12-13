@@ -1,7 +1,10 @@
 package app.equip;
 
-import app.lib.database;
+import app.lib.DBUtils;
+import app.lib.DbConnection;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -17,45 +20,16 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    @FXML
-    private Button btnLoginLF;
-
-    @FXML
-    private Button btnLoginSF;
-
-    @FXML
-    private Button btnRequesteeLF;
-
-    @FXML
-    private Button btnRequesteeSF;
-
-    @FXML
-    private BorderPane login_form;
-
-    @FXML
-    private BorderPane signup_form;
-
-    @FXML
-    private PasswordField txtLogPassword;
-
-    @FXML
-    private TextField txtLogUsername;
-
-    @FXML
-    private PasswordField txtSignPassword;
-
-    @FXML
-    private TextField txtSignUsername;
-
     //LET'S CREATE OUT DATABASE AND CONNECT IT TO JAVA / THE APPLICATION
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
 
+    //CONTROL THE LOGIN OF ACCOUNTS
     public void loginAccount(){
         String sql = "SELECT user_name, user_password FROM tb_login WHERE user_name = ? and user_password = ?";
 
-        connect = database.connect();
+        connect = DbConnection.connect();
 
         try{
 
@@ -102,10 +76,128 @@ public class LoginController implements Initializable {
 
     }
 
+    //CONTROL THE REGISTRATION OF ACCOUNTS
+    public void registerAccount(){
+
+        //Create a stored procedure to accompany both INSERT for user and login table
+        String sql = "INSERT INTO tb_login (user_name, user_password) VALUES (?,?)";
+
+        connect = DbConnection.connect();
+
+        try{
+            Alert alert;
+            if(txtSignUsername.getText().isEmpty() || txtSignPassword.getText().isEmpty()){
+                //IF THE USERNAME / PASSWORD WAS EMPTY
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            } else {
+                // CHECK IF USERNAME IS ALREADY TAKEN
+                String checkData = "SELECT user_name FROM tb_login WHERE user_name = '"
+                + txtSignUsername.getText() +"'";
+
+                prepare = connect.prepareStatement(checkData);
+                result = prepare.executeQuery();
+
+                //IF RESULT SQL IS EXECUTE THE QUERY
+                if(result.next()){
+                    //IF USERNAME IS TAKEN TO NOTIFY THE USER
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText(txtSignUsername.getText() +"is already taken");
+                    alert.showAndWait();
+                } else {
+                    //IF PASSWORD IS LESS THAN 8 CHARACTERS SEND AN ALERT
+                    if(txtSignPassword.getText().length() < 8){
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Invalid Password, at least 8 characters needed");
+                        alert.showAndWait();
+                    } else {
+                        //IF USERNAME AND PASSWORD IS APPROVED THEN INSERT INTO THE DATABASE
+                        prepare = connect.prepareStatement(sql);
+                        prepare.setString(1, txtSignUsername.getText());
+                        prepare.setString(2, txtSignPassword.getText());
+
+                        prepare.executeUpdate();
+
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Successfully created a new Account!");
+                        alert.showAndWait();
+
+                        //AFTER THE SIGNUP COMPLETED SWITCH FORM TO LOGIN FORM AND EMPTY THE SIGNUP TEXTFIELD EMPTY
+                        login_form.setVisible(true);
+                        signup_form.setVisible(false);
+
+                        txtSignUsername.setText("");
+                        txtSignPassword.setText("");
+                    }
+                }
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //CONTROLS THE SWITCHING BETWEEN SIGNUP AND LOGIN FORM
+    public void switchForm(ActionEvent event){
+
+        if(event.getSource() == btnLoginSF){
+            login_form.setVisible(true);
+            signup_form.setVisible(false);
+        } else if(event.getSource() == btnRequesteeLF){
+            login_form.setVisible(false);
+            signup_form.setVisible(true);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         //TODO
+        /*FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+        Parent root = loader.load();
+        LoginController loginController = loader.getController();
+        loginController.setUserInformation(username);*/
     }
+
+
+    //FXML Elements from the fxml file
+    @FXML
+    private Button btnLoginLF;
+
+    @FXML
+    private Button btnLoginSF;
+
+    @FXML
+    private Button btnRequesteeLF;
+
+    @FXML
+    private Button btnRequesteeSF;
+
+    @FXML
+    private BorderPane login_form;
+
+    @FXML
+    private BorderPane signup_form;
+
+    @FXML
+    private PasswordField txtLogPassword;
+
+    @FXML
+    private TextField txtLogUsername;
+
+    @FXML
+    private PasswordField txtSignPassword;
+
+    @FXML
+    private TextField txtSignUsername;
 }
