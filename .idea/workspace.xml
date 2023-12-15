@@ -5,29 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f6b8386-9ccc-4b83-9cce-f669585a2a53" name="Changes" comment="Changes made to admin and requestee form">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/equip/RequesteeViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/Roles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/lib/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/requestee-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/equip/AdminViewControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/lib/DbConnectionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/CrudFormController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/EquipApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/GuestRegisterViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/LoginViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/lib/DBUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/equip/RequesteeViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/equip/RequesteeViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/admin-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/crudForm.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/guest-register-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/login-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/FXML/loginview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/app/equip/values/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +24,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -75,25 +61,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System/src/main/java/app/equip&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tammy/Downloads/demo&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.29948586&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_directory_selection": "C:/Users/tammy/Documents/ICT SCHOOL FOLDER/2023- Year 4/Software Testing and Implementation/Module 2/Equipment-Request-Management-System/src/main/java/app/equip",
+    "last_opened_file_path": "C:/Users/tammy/Downloads/demo",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.29948586"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tammy\Documents\ICT SCHOOL FOLDER\2023- Year 4\Software Testing and Implementation\Module 2\EquipmentManagementSystem\src\main\java\app\equip" />
       <recent name="C:\Users\tammy\Documents\ICT SCHOOL FOLDER\2023- Year 4\Software Testing and Implementation\Module 2\EquipmentManagementSystem\src\main\resources\app\equip\FXML" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="app.lib" />
+      <recent name="app.equip" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DbConnectionTest.getConnectionTest">
     <configuration name="EquipApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.equip.EquipApplication" />
       <module name="equip" />
@@ -101,6 +96,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DbConnectionTest.getConnectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="equip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.lib.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.lib" />
+      <option name="MAIN_CLASS_NAME" value="app.lib.DbConnectionTest" />
+      <option name="METHOD_NAME" value="getConnectionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DbConnectionTest.getConnectionTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -159,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702479871742</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changes made to admin and requestee form">
+      <option name="closed" value="true" />
+      <created>1702615046945</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702615046946</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

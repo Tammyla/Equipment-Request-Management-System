@@ -1,5 +1,7 @@
 package app.equip;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,9 +14,34 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RequesteeViewController implements Initializable {
+
+    private String[] givenTimeList = {"8:00 AM","9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","9:00 PM"};
+    public void requestGivenTimeList(){
+        List<String> gList = new ArrayList<>();
+
+        for(String data: givenTimeList){
+            gList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(gList);
+        cbxGivenTime.setItems(listData);
+    }
+    private String[] returnTimeList = {"8:00 AM","9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","9:00 PM"};
+    public void requestReturnTimeList(){
+        List<String> rList = new ArrayList<>();
+
+        for(String data: returnTimeList){
+            rList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(rList);
+        cbxGivenTime.setItems(listData);
+    }
 
     public void setUserInformation(String username){
         lblUsername.setText(username);
@@ -47,6 +74,8 @@ public class RequesteeViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //TODO
+        requestGivenTimeList();
+        requestReturnTimeList();
 
     }
 

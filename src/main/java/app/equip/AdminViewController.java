@@ -26,7 +26,43 @@ public class AdminViewController implements Initializable {
     private ResultSet result;
     private Alert alert;
 
-    //private String[] yearList = {"1st Year","",""};
+
+    //Start of Equipment Form List
+
+    public void equipmentAddBtn(){
+        String insertData = "INSERT INTO tb_inventory (id, name, type_id, availability_id)"
+                + "VALUES(?,?,?,?) ";
+
+        connect = DbConnection.connect();
+
+        try{
+
+            String checkData = "SELECT id FROM tb_inventory WHERE id = " + txtEquipmentID.getText() ;
+
+            prepare = connect.prepareStatement(checkData);
+            result = prepare.executeQuery();
+
+            if(result.next()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Equipment ID: " + txtEquipmentID.getText() + "is already taken");
+                alert.showAndWait();
+            } else {
+                prepare = connect.prepareStatement(insertData);
+                prepare.setString(1,txtEquipmentID.getText());
+                prepare.setString(2,txtEquipmentName.getText());
+                prepare.setString(3,(String)cbxEquipmentType.getSelectionModel().getSelectedItem());
+                prepare.setString(4,(String)cbxEquipmentAvailability.getSelectionModel().getSelectedItem());
+
+                prepare.executeUpdate();
+
+                //TO UPDATE THE TABLEVIEW
+                equipmentShowData();
+            }
+
+        } catch(Exception e){e.printStackTrace();}
+    }
 
     public ObservableList<Inventory> equipmentListData(){
         ObservableList<Inventory> listData = FXCollections.observableArrayList();
@@ -69,6 +105,7 @@ public class AdminViewController implements Initializable {
         if((num - 1) < -1)return;
 
     }
+    //End of Equipment Form List
 
 
 
@@ -112,6 +149,7 @@ public class AdminViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //TODO
+        equipmentShowData();
 
     }
 

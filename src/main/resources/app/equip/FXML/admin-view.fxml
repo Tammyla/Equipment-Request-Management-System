@@ -12,6 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
@@ -93,29 +94,108 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <SplitPane fx:id="dashoardForm" dividerPositions="0.40093499554764017" layoutX="83.0" layoutY="49.0" prefHeight="600.0" prefWidth="900.0" styleClass="light-green-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane fx:id="dashoardForm" layoutX="83.0" layoutY="49.0" prefHeight="600.0" prefWidth="900.0" styleClass="light-green-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
                                     <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="586.0" prefWidth="344.0" styleClass="white-border" AnchorPane.bottomAnchor="6.800000000000068" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="6.0">
                                        <children>
-                                          <Label layoutX="66.0" layoutY="222.0" prefHeight="83.0" prefWidth="226.0" text="dashboard">
+                                          <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="188.0" text="Dashboard" textFill="WHITE" underline="true">
                                              <font>
-                                                <Font size="48.0" />
+                                                <Font name="Arial Black" size="28.0" />
                                              </font>
                                           </Label>
+                                          <Pane layoutX="32.0" layoutY="75.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Available Equipment" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="304.0" layoutY="75.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Unavailable Equipment" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="578.0" layoutY="75.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Total Users" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="44.0" layoutY="271.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Confirmed Request" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="316.0" layoutY="271.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Pending Request" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="590.0" layoutY="271.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="Completed Request" underline="true">
+                                                   <font>
+                                                      <Font name="Arial Black" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                                   <font>
+                                                      <Font name="Arial Black" size="48.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="586.0" prefWidth="520.0" styleClass="white-border" AnchorPane.bottomAnchor="6.800000000000068" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="6.0" />
-                                 </children>
-                              </AnchorPane>
                           </items>
                         </SplitPane>
-                        <SplitPane fx:id="equipmentForm" dividerPositions="0.40093499554764017" layoutX="10.0" layoutY="10.0" prefHeight="630.4" prefWidth="930.4" styleClass="light-green-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane fx:id="equipmentForm" dividerPositions="0.40093499554764017" layoutX="10.0" layoutY="10.0" prefHeight="630.4" prefWidth="930.4" styleClass="light-green-bg" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                                  <children>
@@ -150,7 +230,7 @@
                                              </font>
                                           </Label>
                                           <ComboBox fx:id="cbxEquipmentAvailability" layoutX="33.0" layoutY="297.0" prefHeight="26.0" prefWidth="278.0" promptText="Choose..." />
-                                          <Button fx:id="btnEquipmentAdd" layoutX="56.0" layoutY="402.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Add" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="56.0">
+                                          <Button fx:id="btnEquipmentAdd" layoutX="56.0" layoutY="402.0" mnemonicParsing="false" onAction="#equipmentAddBtn" prefHeight="35.0" prefWidth="110.0" text="Add" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="56.0">
                                              <styleClass>
                                                 <String fx:value="form-btn" />
                                                 <String fx:value="btn" />
