@@ -1,21 +1,24 @@
 package app.equip;
 
-import app.lib.DBUtils;
 import app.lib.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -56,6 +59,21 @@ public class LoginController implements Initializable {
                     alert.setContentText("Successfully Login");
                     alert.showAndWait();
 
+                    //TO HIDE THE LOGIN FORM
+                    btnLoginLF.getScene().getWindow().hide();
+
+                    //TO DECIDE WHETHER IT SHOULD BE ADMIN OR REQUESTEE
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-view.fxml"));
+                    Parent root = loader.load();
+                    AdminViewController crudController = loader.getController();
+                    String username = txtLogUsername.getText();
+                    crudController.setUserInformation(username);
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    stage.setScene(scene);
+                    stage.show();
+
                 } else {
                     // IF INCORRECT USERNAME OR PASSWORD
                     alert = new Alert(Alert.AlertType.ERROR);
@@ -72,6 +90,30 @@ public class LoginController implements Initializable {
 
         }catch(Exception e){
             e.printStackTrace();
+        }finally {
+            //This will close the database connection when not in use by closing the resultSet first
+            if (result != null){
+                try{
+                    result.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (prepare != null){
+                try{
+                    prepare.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connect != null){
+                try{
+                    connect.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
         }
 
     }
@@ -144,7 +186,32 @@ public class LoginController implements Initializable {
 
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            //This will close the database connection when not in use by closing the resultSet first
+            if (result != null){
+                try{
+                    result.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (prepare != null){
+                try{
+                    prepare.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connect != null){
+                try{
+                    connect.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
         }
+
     }
 
     //CONTROLS THE SWITCHING BETWEEN SIGNUP AND LOGIN FORM
@@ -163,10 +230,7 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //TODO
-        /*FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
-        Parent root = loader.load();
-        LoginController loginController = loader.getController();
-        loginController.setUserInformation(username);*/
+
     }
 
 

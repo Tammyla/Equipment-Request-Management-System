@@ -1,6 +1,5 @@
 package app.lib;
 
-import app.equip.AdminViewController;
 import java.sql.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +24,8 @@ public class DBUtils {
             try{
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                AdminViewController adminViewController = loader.getController();
-                adminViewController.setUserInformation(username);
+                /*AdminViewController adminViewController = loader.getController();
+                adminViewController.setUserInformation(username);*/
             } catch (IOException e){
                 e.printStackTrace();
             }

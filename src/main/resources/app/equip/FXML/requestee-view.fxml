@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.equip.RequesteeViewController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="68.0" layoutY="23.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <SplitPane fx:id="pnlRequesteeMenu" dividerPositions="0.3696524064171122" layoutX="14.0" layoutY="51.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="250.4" styleClass="blue-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="73.0" layoutY="131.0" prefHeight="27.0" prefWidth="101.0" text="Welcome" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblUsername" alignment="CENTER" layoutX="76.0" layoutY="158.0" prefHeight="22.0" prefWidth="96.0" text="Requestee" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="104.0" fitWidth="117.0" layoutX="72.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons8-user-64.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Button fx:id="btnDashboard" layoutX="-1.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="255.0" text="Dashboard" AnchorPane.topAnchor="0.0">
+                                       <styleClass>
+                                          <String fx:value="menu" />
+                                          <String fx:value="btn" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnRequest" layoutX="-1.0" layoutY="45.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="255.0" text="Request" AnchorPane.topAnchor="45.0">
+                                       <styleClass>
+                                          <String fx:value="menu" />
+                                          <String fx:value="btn" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnProfile" layoutX="-1.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="46.0" prefWidth="255.0" text="Profile" AnchorPane.topAnchor="90.0">
+                                       <styleClass>
+                                          <String fx:value="menu" />
+                                          <String fx:value="btn" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnSignOut" layoutX="-1.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="255.0" text="Sign Out" AnchorPane.bottomAnchor="-2.6000000000000227">
+                                       <styleClass>
+                                          <String fx:value="menu" />
+                                          <String fx:value="btn" />
+                                       </styleClass>
+                                       <graphic>
+                                          <ImageView fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons8-sign-out-64.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="dashboardForm" layoutX="191.0" layoutY="200.0" prefHeight="600.0" prefWidth="849.6" styleClass="light-green-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="573.0" prefWidth="825.0" styleClass="white-border" AnchorPane.bottomAnchor="12.399999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="188.0" text="Dashboard" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font name="Arial Black" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="20.0" layoutY="69.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" text="Confirmed Request" underline="true">
+                                             <font>
+                                                <Font name="Arial Black" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                             <font>
+                                                <Font name="Arial Black" size="48.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="288.0" layoutY="69.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" text="Pending Request" underline="true">
+                                             <font>
+                                                <Font name="Arial Black" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                             <font>
+                                                <Font name="Arial Black" size="48.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="554.0" layoutY="69.0" prefHeight="150.0" prefWidth="250.0" styleClass="light-blue-bg">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" text="Completed Request" underline="true">
+                                             <font>
+                                                <Font name="Arial Black" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="23.0" layoutY="49.0" prefHeight="86.0" prefWidth="57.0" text="20">
+                                             <font>
+                                                <Font name="Arial Black" size="48.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="requestForm" layoutX="10.0" layoutY="10.0" prefHeight="610.4" prefWidth="860.8" styleClass="light-green-bg" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="573.0" prefWidth="825.0" styleClass="white-border" AnchorPane.bottomAnchor="12.399999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="20.0" prefHeight="32.0" prefWidth="206.0" text="Request Panel" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font name="Arial Black" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="84.0" prefHeight="22.0" prefWidth="150.0" text="Requested Type" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="426.0" layoutY="84.0" prefHeight="22.0" prefWidth="156.0" text="Requested Items" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtRequestedItems" layoutX="426.0" layoutY="106.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="20.0" layoutY="183.0" prefHeight="22.0" prefWidth="106.0" text="Given Time" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="426.0" layoutY="183.0" prefHeight="22.0" prefWidth="107.0" text="Return Time" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="276.0" prefHeight="22.0" prefWidth="82.0" text="Location" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtName21" layoutX="20.0" layoutY="298.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="20.0" layoutY="365.0" prefHeight="18.0" prefWidth="72.0" text="Notes" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtNotes" layoutX="20.0" layoutY="387.0" prefHeight="40.0" prefWidth="778.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button fx:id="btnRequestUpdate" layoutX="300.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Update" textFill="#fffdfd">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="submit" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnRequestDelete" layoutX="550.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Delete" textFill="#fffdfd">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="submit" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnRequestConfirm" layoutX="50.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Confirm" textFill="#fffdfd">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="submit" />
+                                       </styleClass>
+                                    </Button>
+                                    <ComboBox fx:id="cbxRequestedType" layoutX="20.0" layoutY="106.0" prefHeight="40.0" prefWidth="375.0" />
+                                    <DatePicker fx:id="dpRequestedDate" layoutX="426.0" layoutY="298.0" prefHeight="40.0" prefWidth="375.0" />
+                                    <Label layoutX="426.0" layoutY="276.0" prefHeight="22.0" prefWidth="150.0" text="Requested Date" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cbxGivenTime" layoutX="20.0" layoutY="205.0" prefHeight="40.0" prefWidth="375.0" />
+                                    <ComboBox fx:id="cbxReturnTime" layoutX="426.0" layoutY="205.0" prefHeight="40.0" prefWidth="375.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="profileForm" layoutX="20.0" layoutY="20.0" prefHeight="620.0" prefWidth="869.6" styleClass="light-green-bg" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="573.0" prefWidth="825.0" styleClass="white-border" AnchorPane.bottomAnchor="12.399999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="188.0" text="Profile Panel" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font name="Arial Black" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="84.0" prefHeight="22.0" prefWidth="112.0" text="First Name" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtFName" layoutX="20.0" layoutY="106.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="426.0" layoutY="84.0" prefHeight="22.0" prefWidth="97.0" text="Last Name" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtLName" layoutX="426.0" layoutY="106.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="20.0" layoutY="183.0" prefHeight="22.0" prefWidth="136.0" text="Phone Number" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtPhoneNo" layoutX="20.0" layoutY="205.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="426.0" layoutY="183.0" prefHeight="22.0" prefWidth="112.0" text="Email" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtEmail" layoutX="426.0" layoutY="205.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="225.0" layoutY="382.0" prefHeight="22.0" prefWidth="112.0" text="Role" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cbxRole" layoutX="225.0" layoutY="405.0" prefHeight="40.0" prefWidth="375.0" />
+                                    <Label layoutX="20.0" layoutY="287.0" prefHeight="22.0" prefWidth="112.0" text="Username" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtUsername" layoutX="20.0" layoutY="309.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="426.0" layoutY="287.0" prefHeight="22.0" prefWidth="112.0" text="Password" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtPassword" layoutX="426.0" layoutY="309.0" prefHeight="40.0" prefWidth="375.0" styleClass="textfield">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button fx:id="btnProfileUpdate" layoutX="172.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Update" textFill="#fffdfd">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="submit" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btnProfileDelete" layoutX="429.0" layoutY="485.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Delete" textFill="#fffdfd">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="submit" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
