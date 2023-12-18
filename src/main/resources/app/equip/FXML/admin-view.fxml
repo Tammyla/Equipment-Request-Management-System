@@ -235,17 +235,17 @@
                                                 <String fx:value="form-btn" />
                                                 <String fx:value="btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnEquipmentUpdate" layoutX="177.0" layoutY="402.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Update" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="179.5">
+                                          <Button fx:id="btnEquipmentUpdate" layoutX="177.0" layoutY="402.0" mnemonicParsing="false" onAction="#equipmentUpdateBtn" prefHeight="35.0" prefWidth="110.0" text="Update" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="179.5">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnEquipmentClear" layoutX="56.0" layoutY="450.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Clear" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="58.5">
+                                          <Button fx:id="btnEquipmentClear" layoutX="56.0" layoutY="450.0" mnemonicParsing="false" onAction="#equipmentClearBtn" prefHeight="35.0" prefWidth="110.0" text="Clear" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="58.5">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnEquipmentDelete" layoutX="177.0" layoutY="450.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Delete" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="177.0">
+                                          <Button fx:id="btnEquipmentDelete" layoutX="177.0" layoutY="450.0" mnemonicParsing="false" onAction="#equipmentDeleteBtn" prefHeight="35.0" prefWidth="110.0" text="Delete" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="177.0">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
@@ -258,7 +258,7 @@
                                  <children>
                                     <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="586.0" prefWidth="520.0" styleClass="white-border" AnchorPane.bottomAnchor="6.800000000000068" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.600000000000023" AnchorPane.topAnchor="6.0">
                                        <children>
-                                          <TableView fx:id="tblEquipmentView" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="493.0" AnchorPane.bottomAnchor="9.899999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.5" AnchorPane.topAnchor="14.0">
+                                          <TableView fx:id="tblEquipmentView" layoutX="14.0" layoutY="14.0" onMouseClicked="#equipmentSelectData" prefHeight="560.0" prefWidth="493.0" AnchorPane.bottomAnchor="9.899999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.5" AnchorPane.topAnchor="14.0">
                                             <columns>
                                               <TableColumn fx:id="colEquipmentID" prefWidth="75.0" text="ID" />
                                               <TableColumn fx:id="colEquipmentName" prefWidth="75.0" text="Name" />
@@ -383,22 +383,22 @@
                                              </font>
                                           </Label>
                                           <ComboBox fx:id="cbxUserRole" layoutX="33.0" layoutY="409.0" prefHeight="26.0" prefWidth="278.0" promptText="Choose..." />
-                                          <Button fx:id="btnUserAdd" layoutX="56.0" layoutY="466.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Add" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="56.0">
+                                          <Button fx:id="btnUserAdd" layoutX="56.0" layoutY="466.0" mnemonicParsing="false" onAction="#userAddBtn" prefHeight="35.0" prefWidth="110.0" text="Add" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="56.0">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnUserUpdate" layoutX="177.0" layoutY="466.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Update" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="177.0">
+                                          <Button fx:id="btnUserUpdate" layoutX="177.0" layoutY="466.0" mnemonicParsing="false" onAction="#userUpdateBtn" prefHeight="35.0" prefWidth="110.0" text="Update" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="177.0">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnUserClear" layoutX="56.0" layoutY="514.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Clear" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="56.0">
+                                          <Button fx:id="btnUserClear" layoutX="56.0" layoutY="514.0" mnemonicParsing="false" onAction="#userClearBtn" prefHeight="35.0" prefWidth="110.0" text="Clear" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="56.0">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
                                              </styleClass></Button>
-                                          <Button fx:id="btnUserDelete" layoutX="177.0" layoutY="514.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="Delete" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="177.0">
+                                          <Button fx:id="btnUserDelete" layoutX="177.0" layoutY="514.0" mnemonicParsing="false" onAction="#userDeleteBtn" prefHeight="35.0" prefWidth="110.0" text="Delete" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="177.0">
                                              <styleClass>
                                                 <String fx:value="btn" />
                                                 <String fx:value="form-btn" />
@@ -411,7 +411,7 @@
                                  <children>
                                     <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="586.0" prefWidth="520.0" styleClass="white-border" AnchorPane.bottomAnchor="6.800000000000068" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="6.0">
                                        <children>
-                                          <TableView fx:id="tblUserView" layoutX="14.0" layoutY="14.0" prefHeight="560.0" prefWidth="493.0" AnchorPane.bottomAnchor="9.899999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.899999999999977" AnchorPane.topAnchor="14.0">
+                                          <TableView fx:id="tblUserView" layoutX="14.0" layoutY="14.0" onMouseClicked="#userSelectData" prefHeight="560.0" prefWidth="493.0" AnchorPane.bottomAnchor="9.899999999999977" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.899999999999977" AnchorPane.topAnchor="14.0">
                                              <columns>
                                                 <TableColumn fx:id="colUserID" prefWidth="60.79998779296875" text="ID" />
                                                 <TableColumn fx:id="colUserFName" prefWidth="84.0" text="First Name" />

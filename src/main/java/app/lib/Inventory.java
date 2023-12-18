@@ -5,11 +5,17 @@ public class Inventory {
     //Attributes
     private Integer id;
     private String name;
-    private Integer type;
-    private Integer availability;
+    private String type;
+    private String availability;
 
-    public Inventory(Integer id, String name, Integer type, Integer availability) {
+    public Inventory(Integer id, String name, String type, String availability) {
         this.id = id;
+        this.name = name;
+        this.type = type;
+        this.availability = availability;
+    }
+
+    public Inventory(String name, String type, String availability) {
         this.name = name;
         this.type = type;
         this.availability = availability;
@@ -31,29 +37,29 @@ public class Inventory {
         this.name = name;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Integer getAvailability() {
+    public String getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Integer availability) {
+    public void setAvailability(String availability) {
         this.availability = availability;
     }
 
     @Override
     public String toString() {
-        return "Equipment{" +
+        return "Inventory{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type=" + type +
-                ", availability=" + availability +
+                ", type='" + type + '\'' +
+                ", availability='" + availability + '\'' +
                 '}';
     }
 }

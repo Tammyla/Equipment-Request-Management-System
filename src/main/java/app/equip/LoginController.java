@@ -1,6 +1,8 @@
 package app.equip;
 
 import app.lib.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,16 +11,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -27,6 +33,8 @@ public class LoginController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
+
+    public String username;
 
     //CONTROL THE LOGIN OF ACCOUNTS
     public void loginAccount(){
@@ -63,11 +71,8 @@ public class LoginController implements Initializable {
                     btnLoginLF.getScene().getWindow().hide();
 
                     //TO DECIDE WHETHER IT SHOULD BE ADMIN OR REQUESTEE
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-view.fxml"));
-                    Parent root = loader.load();
-                    AdminViewController crudController = loader.getController();
-                    String username = txtLogUsername.getText();
-                    crudController.setUserInformation(username);
+                    Parent root = FXMLLoader.load(getClass().getResource("FXML/admin-view.fxml"));
+
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
 
@@ -85,8 +90,6 @@ public class LoginController implements Initializable {
 
 
             }
-
-
 
         }catch(Exception e){
             e.printStackTrace();
@@ -138,7 +141,7 @@ public class LoginController implements Initializable {
             } else {
                 // CHECK IF USERNAME IS ALREADY TAKEN
                 String checkData = "SELECT user_name FROM tb_login WHERE user_name = '"
-                + txtSignUsername.getText() +"'";
+                + txtSignUsername.getText() + "' ";
 
                 prepare = connect.prepareStatement(checkData);
                 result = prepare.executeQuery();
@@ -149,7 +152,7 @@ public class LoginController implements Initializable {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText(txtSignUsername.getText() +"is already taken");
+                    alert.setContentText(txtSignUsername.getText() +" is already taken");
                     alert.showAndWait();
                 } else {
                     //IF PASSWORD IS LESS THAN 8 CHARACTERS SEND AN ALERT
@@ -173,12 +176,15 @@ public class LoginController implements Initializable {
                         alert.setContentText("Successfully created a new Account!");
                         alert.showAndWait();
 
-                        //AFTER THE SIGNUP COMPLETED SWITCH FORM TO LOGIN FORM AND EMPTY THE SIGNUP TEXTFIELD EMPTY
+                        //AFTER THE SIGNUP COMPLETED SWITCH FORM TO LOG IN FORM AND EMPTY THE SIGNUP TEXTFIELD EMPTY
                         login_form.setVisible(true);
                         signup_form.setVisible(false);
+                        user_form.setVisible(false);
 
                         txtSignUsername.setText("");
                         txtSignPassword.setText("");
+
+                        //send information to the class
                     }
                 }
 
@@ -186,7 +192,8 @@ public class LoginController implements Initializable {
 
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+        }
+        finally {
             //This will close the database connection when not in use by closing the resultSet first
             if (result != null){
                 try{
@@ -214,15 +221,127 @@ public class LoginController implements Initializable {
 
     }
 
+    //To place a list in the combo-box
+    private String[] roleList = {"Staff","Student"};
+    public void userRoleList(){
+        List<String> rList = new ArrayList<>();
+
+        for(String data: roleList){
+            rList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(rList);
+        cbxRoleUF.setItems(listData);
+    }
+
+    //CONTROL THE CREATION OF USER ACCOUNTS
+    public void createUserAccount(){
+
+        //Sql Insert statement for tb_login
+        String insert = "INSERT INTO tb_user(first_name,last_name,phone_no,email,role_id,login_id,inventory_id) VALUES (?,?,?,?,?,?,?)";
+
+        connect = DbConnection.connect();
+
+        try{
+            Alert alert;
+            if(txtFNameUF.getText().isEmpty() || txtLNameUF.getText().isEmpty() || txtPhoneNoUF.getText().isEmpty() || txtEmailUF.getText().isEmpty() || cbxRoleUF.getSelectionModel().isEmpty()){
+                //IF THE FIELDS WAS EMPTY
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            } else {
+                // CHECK IF USERNAME IS ALREADY TAKEN
+                String checkData = "SELECT user_name FROM tb_login WHERE user_name = '"
+                        + txtUsernameUF.getText() + "' ";
+
+                prepare = connect.prepareStatement(checkData);
+                result = prepare.executeQuery();
+                System.out.println(result);
+
+                //IF RESULT SQL IS EXECUTE THE QUERY
+                if(result.next()){
+                    //IF FIELDS IS APPROVED THEN INSERT INTO THE DATABASE
+                    prepare = connect.prepareStatement(insert);
+                    prepare.setString(1, txtFNameUF.getText());
+                    prepare.setString(2, txtLNameUF.getText());
+                    prepare.setString(3, txtPhoneNoUF.getText());
+                    prepare.setString(4, txtEmailUF.getText());
+
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully created a new User Account!");
+                    alert.showAndWait();
+
+                    //AFTER THE SIGNUP COMPLETED SWITCH FORM TO LOG IN FORM AND EMPTY THE SIGNUP TEXTFIELD EMPTY
+                    login_form.setVisible(true);
+                    signup_form.setVisible(false);
+                    user_form.setVisible(false);
+
+                    txtFNameUF.setText("");
+                    txtLNameUF.setText("");
+                    txtPhoneNoUF.setText("");
+                    txtEmailUF.setText("");
+                    txtUsernameUF.setText("");
+                    //cbxRoleUF.setSelectionModel;
+                }
+
+
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //This will close the database connection when not in use by closing the resultSet first
+            if (result != null){
+                try{
+                    result.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (prepare != null){
+                try{
+                    prepare.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (connect != null){
+                try{
+                    connect.close();
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+    }
+
+
+
     //CONTROLS THE SWITCHING BETWEEN SIGNUP AND LOGIN FORM
     public void switchForm(ActionEvent event){
 
         if(event.getSource() == btnLoginSF){
-            login_form.setVisible(true);
+            login_form.setVisible(false);
             signup_form.setVisible(false);
+            user_form.setVisible(true);
         } else if(event.getSource() == btnRequesteeLF){
             login_form.setVisible(false);
             signup_form.setVisible(true);
+            user_form.setVisible(false);
+        }else if(event.getSource() == btnSubmitUF){
+            login_form.setVisible(true);
+            signup_form.setVisible(false);
+            user_form.setVisible(false);
         }
     }
 
@@ -230,11 +349,13 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //TODO
+        userRoleList();
 
     }
 
 
     //FXML Elements from the fxml file
+
     @FXML
     private Button btnLoginLF;
 
@@ -248,10 +369,25 @@ public class LoginController implements Initializable {
     private Button btnRequesteeSF;
 
     @FXML
+    private Button btnSubmitUF;
+
+    @FXML
+    private ComboBox<?> cbxRoleUF;
+
+    @FXML
     private BorderPane login_form;
 
     @FXML
     private BorderPane signup_form;
+
+    @FXML
+    private TextField txtEmailUF;
+
+    @FXML
+    private TextField txtFNameUF;
+
+    @FXML
+    private TextField txtLNameUF;
 
     @FXML
     private PasswordField txtLogPassword;
@@ -260,8 +396,17 @@ public class LoginController implements Initializable {
     private TextField txtLogUsername;
 
     @FXML
+    private TextField txtPhoneNoUF;
+
+    @FXML
     private PasswordField txtSignPassword;
 
     @FXML
     private TextField txtSignUsername;
+
+    @FXML
+    private TextField txtUsernameUF;
+
+    @FXML
+    private BorderPane user_form;
 }

@@ -8,10 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DbConnectionTest {
 
+    //Unit Testing to test if the database is connected
     @Test
     void getConnectionTest(){
         Connection dbConnection = DbConnection.connect();
         assertNotNull(dbConnection, "Connection should be successful.");
     }
+
+
 
 }

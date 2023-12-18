@@ -2,20 +2,28 @@ package app.equip;
 
 import app.lib.DbConnection;
 import app.lib.Inventory;
+import app.lib.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminViewController implements Initializable {
@@ -29,39 +37,186 @@ public class AdminViewController implements Initializable {
 
     //Start of Equipment Form List
 
+    //To place a list in the combo-box
+    private String[] availabilityList = {"Available","Unavailable"};
+    public void eqiAvailabilityList(){
+        List<String> aList = new ArrayList<>();
+
+        for(String data: availabilityList){
+            aList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(aList);
+        cbxEquipmentAvailability.setItems(listData);
+    }
+
+    private String[] typeList = {"Laptop","Accessories","Lab","Speaker","Projector"};
+    public void eqiTypeList(){
+        List<String> tList = new ArrayList<>();
+
+        for(String data: typeList){
+            tList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(tList);
+        cbxEquipmentType.setItems(listData);
+    }
+
     public void equipmentAddBtn(){
-        String insertData = "INSERT INTO tb_inventory (id, name, type_id, availability_id)"
-                + "VALUES(?,?,?,?) ";
+
+        connect = DbConnection.connect();
+
+        try{
+            if(txtEquipmentName.getText().isEmpty() || cbxEquipmentType.getSelectionModel().getSelectedItem() == null ||cbxEquipmentAvailability.getSelectionModel().getSelectedItem() == null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            } else {
+                String checkData = "SELECT id FROM tb_inventory WHERE id = '" + txtEquipmentID.getText() + "' " ;
+
+                prepare = connect.prepareStatement(checkData);
+                result = prepare.executeQuery();
+
+                if(result.next()){
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Equipment ID: " + txtEquipmentID.getText() + "is already taken");
+                    alert.showAndWait();
+                } else {
+                    String insertData = "INSERT INTO tb_inventory (name, type, availability)"
+                            + "VALUES(?,?,?) ";
+
+                    prepare = connect.prepareStatement(insertData);
+                    prepare.setString(1,txtEquipmentName.getText());
+                    prepare.setString(2,(String)cbxEquipmentType.getSelectionModel().getSelectedItem());
+                    prepare.setString(3,(String)cbxEquipmentAvailability.getSelectionModel().getSelectedItem());
+
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Added");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                }
+            }
+
+        } catch(Exception e){e.printStackTrace();}
+    }
+
+    public void equipmentUpdateBtn(){
 
         connect = DbConnection.connect();
 
         try{
 
-            String checkData = "SELECT id FROM tb_inventory WHERE id = " + txtEquipmentID.getText() ;
-
-            prepare = connect.prepareStatement(checkData);
-            result = prepare.executeQuery();
-
-            if(result.next()){
+            if(txtEquipmentID.getText().isEmpty()){
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
-                alert.setContentText("Equipment ID: " + txtEquipmentID.getText() + "is already taken");
+                alert.setContentText("Please fill in the Equipment ID");
                 alert.showAndWait();
             } else {
-                prepare = connect.prepareStatement(insertData);
-                prepare.setString(1,txtEquipmentID.getText());
-                prepare.setString(2,txtEquipmentName.getText());
-                prepare.setString(3,(String)cbxEquipmentType.getSelectionModel().getSelectedItem());
-                prepare.setString(4,(String)cbxEquipmentAvailability.getSelectionModel().getSelectedItem());
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to UPDATE equipment ID: " + txtEquipmentID.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
 
-                prepare.executeUpdate();
+                if(option.get().equals(ButtonType.OK)){
+                    String updateData = "UPDATE tb_inventory SET"
+                            + "name = '" + txtEquipmentName.getText()
+                            + "', type = '" + cbxEquipmentType.getSelectionModel().getSelectedItem()
+                            + "', availability = '" + cbxEquipmentAvailability.getSelectionModel().getSelectedItem()
+                            + "' WHERE id = '" + txtEquipmentID.getText() + "' ";
 
-                //TO UPDATE THE TABLEVIEW
-                equipmentShowData();
+                    prepare = connect.prepareStatement(updateData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Updated.");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Update Cancelled.");
+                    alert.showAndWait();
+                }
+
             }
 
-        } catch(Exception e){e.printStackTrace();}
+        } catch (Exception e){e.printStackTrace();}
+    }
+
+    public void equipmentDeleteBtn(){
+        connect = DbConnection.connect();
+
+        try{
+
+            if(txtEquipmentID.getText().isEmpty()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill in the Equipment ID");
+                alert.showAndWait();
+            } else {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to DELETE equipment ID : " + txtEquipmentID.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    String deleteData = " DELETE FROM tb_inventory WHERE id = '"
+                            + txtEquipmentID.getText() + "' ";
+
+                    prepare = connect.prepareStatement(deleteData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Deleted.");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Deletion Cancelled.");
+                    alert.showAndWait();
+                }
+
+            }
+
+        } catch (Exception e){e.printStackTrace();}
+    }
+
+    public void equipmentClearBtn(){
+        txtEquipmentID.setText("");
+        txtEquipmentName.setText("");
+        cbxEquipmentType.getSelectionModel().clearSelection();
+        cbxEquipmentAvailability.getSelectionModel().clearSelection();
     }
 
     public ObservableList<Inventory> equipmentListData(){
@@ -78,7 +233,8 @@ public class AdminViewController implements Initializable {
             Inventory eData;
 
             while(result.next()){
-                eData = new Inventory(result.getInt("id"), result.getString("name"), result.getInt("type_id"), result.getInt("availability_id"));
+                //calling the inventory constructor that doesn't have identified the ID to call data from the database
+                eData = new Inventory(result.getString("name"), result.getString("type"), result.getString("availability"));
                 listData.add(eData);
             }
 
@@ -104,14 +260,241 @@ public class AdminViewController implements Initializable {
 
         if((num - 1) < -1)return;
 
+        txtEquipmentID.setText(String.valueOf(eData.getId()));
+        txtEquipmentName.setText(eData.getName());
+
     }
+
     //End of Equipment Form List
 
 
+    //Start of User Form List
 
-    public void setUserInformation(String username){
-        lblUsername.setText(username);
+    //To place a list in the combo-box
+    private String[] roleList = {"Admin","Staff","Student"};
+    public void userRoleList(){
+        List<String> rList = new ArrayList<>();
+
+        for(String data: roleList){
+            rList.add(data);
+        }
+
+        ObservableList listData = FXCollections.observableArrayList(rList);
+        cbxUserRole.setItems(listData);
     }
+
+    //TODO need to edit the internal code for user table button
+    public void userAddBtn(){
+
+        connect = DbConnection.connect();
+
+        try{
+            if(txtEquipmentName.getText().isEmpty() || cbxEquipmentType.getSelectionModel().getSelectedItem() == null ||cbxEquipmentAvailability.getSelectionModel().getSelectedItem() == null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+            } else {
+                String checkData = "SELECT id FROM tb_inventory WHERE id = '" + txtEquipmentID.getText() + "' " ;
+
+                prepare = connect.prepareStatement(checkData);
+                result = prepare.executeQuery();
+
+                if(result.next()){
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Equipment ID: " + txtEquipmentID.getText() + "is already taken");
+                    alert.showAndWait();
+                } else {
+                    String insertData = "INSERT INTO tb_inventory (name, type, availability)"
+                            + "VALUES(?,?,?) ";
+
+                    prepare = connect.prepareStatement(insertData);
+                    prepare.setString(1,txtEquipmentName.getText());
+                    prepare.setString(2,(String)cbxEquipmentType.getSelectionModel().getSelectedItem());
+                    prepare.setString(3,(String)cbxEquipmentAvailability.getSelectionModel().getSelectedItem());
+
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Added");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                }
+            }
+
+        } catch(Exception e){e.printStackTrace();}
+    }
+
+    public void userUpdateBtn(){
+
+        connect = DbConnection.connect();
+
+        try{
+
+            if(txtEquipmentID.getText().isEmpty()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill in the Equipment ID");
+                alert.showAndWait();
+            } else {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to UPDATE equipment ID: " + txtEquipmentID.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    String updateData = "UPDATE tb_inventory SET"
+                            + "name = '" + txtEquipmentName.getText()
+                            + "', type = '" + cbxEquipmentType.getSelectionModel().getSelectedItem()
+                            + "', availability = '" + cbxEquipmentAvailability.getSelectionModel().getSelectedItem()
+                            + "' WHERE id = '" + txtEquipmentID.getText() + "' ";
+
+                    prepare = connect.prepareStatement(updateData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Updated.");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Update Cancelled.");
+                    alert.showAndWait();
+                }
+
+            }
+
+        } catch (Exception e){e.printStackTrace();}
+    }
+
+    public void userDeleteBtn(){
+        connect = DbConnection.connect();
+
+        try{
+
+            if(txtEquipmentID.getText().isEmpty()){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill in the Equipment ID");
+                alert.showAndWait();
+            } else {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to DELETE equipment ID : " + txtEquipmentID.getText() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if(option.get().equals(ButtonType.OK)){
+                    String deleteData = " DELETE FROM tb_inventory WHERE id = '"
+                            + txtEquipmentID.getText() + "' ";
+
+                    prepare = connect.prepareStatement(deleteData);
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully Deleted.");
+                    alert.showAndWait();
+
+                    //TO UPDATE THE TABLEVIEW
+                    equipmentShowData();
+
+                    equipmentClearBtn();
+                } else {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Deletion Cancelled.");
+                    alert.showAndWait();
+                }
+
+            }
+
+        } catch (Exception e){e.printStackTrace();}
+    }
+
+    public void userClearBtn(){
+        txtEquipmentID.setText("");
+        txtEquipmentName.setText("");
+        cbxEquipmentType.getSelectionModel().clearSelection();
+        cbxEquipmentAvailability.getSelectionModel().clearSelection();
+    }
+
+    public ObservableList<User> userListData(){
+        ObservableList<User> listData = FXCollections.observableArrayList();
+
+        String selectData = "SELECT * FROM tb_user";
+
+        connect = DbConnection.connect();
+
+        try{
+            prepare = connect.prepareStatement(selectData);
+            result = prepare.executeQuery();
+
+            User uData;
+
+            while(result.next()){
+                //calling the inventory constructor that doesn't have identified the ID to call data from the database
+                uData = new User(result.getString("first_name"), result.getString("last_name"), result.getString("phone_no"), result.getString("email"));
+                listData.add(uData);
+            }
+
+        } catch (Exception e){e.printStackTrace();}
+        return listData;
+    }
+
+    private ObservableList<User> userData;
+    public void userShowData(){
+        userData = userListData();
+
+        colUserID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colUserFName.setCellValueFactory(new PropertyValueFactory<>("first_name"));
+        colUserLName.setCellValueFactory(new PropertyValueFactory<>("last_name"));
+        colUserPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phone_no"));
+        colUserEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colUserRole.setCellValueFactory(new PropertyValueFactory<>("role_id"));
+
+        tblUserView.setItems(userData);
+    }
+
+    public void userSelectData(){
+        User uData = tblUserView.getSelectionModel().getSelectedItem();
+        int num = tblUserView.getSelectionModel().getSelectedIndex();
+
+        if((num - 1) < -1)return;
+
+        txtUserID.setText(String.valueOf(uData.getId()));
+        txtUserFName.setText(uData.getFirst_name());
+        txtUserLName.setText(uData.getLast_name());
+
+    }
+
+    //End of User Form List
+
+
+
+
 
     //CONTROLS THE SWITCHING BETWEEN SIGNUP AND LOGIN FORM
     public void switchForm(ActionEvent event){
@@ -137,11 +520,20 @@ public class AdminViewController implements Initializable {
             requestForm.setVisible(false);
             userForm.setVisible(true);
         } else if(event.getSource() == btnSignOut){
-            dashoardForm.setVisible(false);
-            equipmentForm.setVisible(false);
-            requestForm.setVisible(false);
-            userForm.setVisible(false);
-            pnAdminMenu.setVisible(false);
+            try {
+                //TO HIDE THE LOGIN FORM
+                btnSignOut.getScene().getWindow().hide();
+
+                //UPON CLOSING, OPEN THE LOGIN FORM
+                Parent root = FXMLLoader.load(getClass().getResource("FXML/loginview.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                stage.setScene(scene);
+                stage.show();
+            } catch (Exception e){e.printStackTrace();}
+
         }
     }
 
@@ -150,6 +542,10 @@ public class AdminViewController implements Initializable {
 
         //TODO
         equipmentShowData();
+        userShowData();
+        eqiAvailabilityList();
+        eqiTypeList();
+        userRoleList();
 
     }
 
@@ -264,25 +660,25 @@ public class AdminViewController implements Initializable {
     private Button btnUserUpdate;
 
     @FXML
-    private TableView<?> tblUserView;
+    private TableView<User> tblUserView;
 
     @FXML
-    private TableColumn<?, ?> colUserEmail;
+    private TableColumn<User, String> colUserEmail;
 
     @FXML
-    private TableColumn<?, ?> colUserFName;
+    private TableColumn<User, String> colUserFName;
 
     @FXML
-    private TableColumn<?, ?> colUserID;
+    private TableColumn<User, String> colUserID;
 
     @FXML
-    private TableColumn<?, ?> colUserLName;
+    private TableColumn<User, String> colUserLName;
 
     @FXML
-    private TableColumn<?, ?> colUserPhoneNo;
+    private TableColumn<User, String> colUserPhoneNo;
 
     @FXML
-    private TableColumn<?, ?> colUserRole;
+    private TableColumn<User, String> colUserRole;
 
     //End of User FXML Attributes
 

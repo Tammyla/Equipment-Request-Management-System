@@ -12,9 +12,9 @@ public class DbConnection {
 
     //public Connection co
     //static reference  to itself
-    private static final String USERNAME = "sql3669573";
-    private static final String PASSWORD = "fuQGT8Vzcr";
-    private static final String URL = "jdbc:mysql://52.8.112.233:3306/sql3669573";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Cherrysql";
+    private static final String URL = "jdbc:mysql://localhost:3306/equip_dbms";
     private static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
     private static final DbConnection instance = new DbConnection();
 
@@ -35,16 +35,6 @@ public class DbConnection {
             return connection;
         }catch (SQLException e){
             throw new RuntimeException("Cannot connect to database", e);
-        } finally {
-            if (connection != null)
-            {
-                try
-                {
-                    connection.close ();
-                    System.out.println ("Database connection terminated");
-                }
-                catch (Exception e) { /* ignore close errors */ }
-            }
         }
     }
 
